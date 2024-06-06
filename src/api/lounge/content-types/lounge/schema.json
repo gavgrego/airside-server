@@ -1,0 +1,87 @@
+{
+  "kind": "collectionType",
+  "collectionName": "lounges",
+  "info": {
+    "singularName": "lounge",
+    "pluralName": "lounges",
+    "displayName": "Lounge",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "name": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
+    },
+    "airport": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::airport.airport",
+      "inversedBy": "lounges"
+    },
+    "hours": {
+      "displayName": "Hours",
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "time.hours"
+    },
+    "cards": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::card.card",
+      "mappedBy": "lounge"
+    },
+    "amenities": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "customField",
+      "options": [
+        "Buffet",
+        "Order from menu",
+        "Shower",
+        "Accessible",
+        "Alcohol",
+        "Beds/Sleeping",
+        "",
+        ""
+      ],
+      "customField": "plugin::multi-select.multi-select"
+    },
+    "detriments": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "customField",
+      "options": [
+        "Overall sucks",
+        "Small/few seats",
+        "Food sucks",
+        "No alcohol",
+        "Dated",
+        ""
+      ],
+      "customField": "plugin::multi-select.multi-select"
+    }
+  }
+}

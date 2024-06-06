@@ -1,0 +1,63 @@
+{
+  "kind": "collectionType",
+  "collectionName": "cards",
+  "info": {
+    "singularName": "card",
+    "pluralName": "cards",
+    "displayName": "Card",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "processor": {
+      "type": "enumeration",
+      "enum": [
+        "Visa",
+        "Amex",
+        "Mastercard"
+      ]
+    },
+    "bank": {
+      "type": "enumeration",
+      "enum": [
+        "Chase",
+        "Amex",
+        "Barclays",
+        "Citi",
+        "Bank of America",
+        "Capital One",
+        "Wells Fargo"
+      ]
+    },
+    "annualFee": {
+      "type": "decimal"
+    },
+    "icon": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "lounge": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::lounge.lounge",
+      "inversedBy": "cards"
+    },
+    "personalOrBiz": {
+      "type": "enumeration",
+      "enum": [
+        "Personal",
+        "Business"
+      ]
+    }
+  }
+}
