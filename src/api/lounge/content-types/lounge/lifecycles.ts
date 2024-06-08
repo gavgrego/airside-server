@@ -6,6 +6,7 @@ module.exports = {
   async afterCreate(data) {
     const { id } = data.result;
     // Query lounge added to database
+    console.log("created");
 
     const lounge = await strapi.entityService.findOne(
       "api::lounge.lounge",

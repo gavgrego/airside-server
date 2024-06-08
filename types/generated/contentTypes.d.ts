@@ -362,6 +362,375 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
+export interface ApiAirportAirport extends Schema.CollectionType {
+  collectionName: 'airports';
+  info: {
+    singularName: 'airport';
+    pluralName: 'airports';
+    displayName: 'Airport';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    code: Attribute.String &
+      Attribute.Required &
+      Attribute.Unique &
+      Attribute.SetMinMaxLength<{
+        minLength: 3;
+        maxLength: 3;
+      }>;
+    lounges: Attribute.Relation<
+      'api::airport.airport',
+      'oneToMany',
+      'api::lounge.lounge'
+    >;
+    name: Attribute.String & Attribute.Required;
+    city: Attribute.String & Attribute.Required;
+    state: Attribute.Enumeration<
+      [
+        'AL',
+        'AK',
+        'AZ',
+        'AR',
+        'CA',
+        'CO',
+        'CT',
+        'DE',
+        'FL',
+        'GA',
+        'HI',
+        'ID',
+        'IL',
+        'IN',
+        'IA',
+        'KS',
+        'KY',
+        'LA',
+        'ME',
+        'MD',
+        'MA',
+        'MI',
+        'MN',
+        'MS',
+        'MO',
+        'MT',
+        'NE',
+        'NV',
+        'NH',
+        'NJ',
+        'NM',
+        'NY',
+        'NC',
+        'ND',
+        'OH',
+        'OK',
+        'OR',
+        'PA',
+        'RI',
+        'SC',
+        'SD',
+        'TN',
+        'TX',
+        'UT',
+        'VT',
+        'VA',
+        'WA',
+        'WV',
+        'WI',
+        'WY'
+      ]
+    >;
+    country: Attribute.Enumeration<
+      [
+        'Argentina',
+        'Australia',
+        'Austria',
+        'Bahamas',
+        'Bahrain',
+        'Bangladesh',
+        'Belgium',
+        'Belize',
+        'Brazil',
+        'Bulgaria',
+        'Cambodia',
+        'Canada',
+        'Chile',
+        'China',
+        'Colombia',
+        'Costa Rica',
+        'Croatia',
+        'Cuba',
+        'Cyprus',
+        'Czech Republic',
+        'Denmark',
+        'Dominican Republic',
+        'Ecuador',
+        'Egypt',
+        'El Salvador',
+        'Estonia',
+        'Fiji',
+        'Finland',
+        'France',
+        'Germany',
+        'Greece',
+        'Guatemala',
+        'Honduras',
+        'Hungary',
+        'Iceland',
+        'India',
+        'Indonesia',
+        'Ireland',
+        'Israel',
+        'Italy',
+        'Jamaica',
+        'Japan',
+        'Jordan',
+        'Kenya',
+        'Kuwait',
+        'Latvia',
+        'Lebanon',
+        'Lithuania',
+        'Luxembourg',
+        'Malaysia',
+        'Malta',
+        'Mauritius',
+        'Mexico',
+        'Monaco',
+        'Montenegro',
+        'Morocco',
+        'Myanmar',
+        'Nepal',
+        'Netherlands',
+        'New Zealand',
+        'Nicaragua',
+        'Nigeria',
+        'Norway',
+        'Oman',
+        'Pakistan',
+        'Panama',
+        'Paraguay',
+        'Peru',
+        'Philippines',
+        'Poland',
+        'Portugal',
+        'Qatar',
+        'Romania',
+        'Russia',
+        'Saint Kitts and Nevis',
+        'Saint Lucia',
+        'Saudi Arabia',
+        'Serbia',
+        'Singapore',
+        'Slovakia',
+        'Slovenia',
+        'South Africa',
+        'South Korea',
+        'Spain',
+        'Sri Lanka',
+        'Sweden',
+        'Switzerland',
+        'Taiwan',
+        'Tanzania',
+        'Thailand',
+        'Trinidad and Tobago',
+        'Turkey',
+        'Uganda',
+        'Ukraine',
+        'United Arab Emirates',
+        'United Kingdom',
+        'United States',
+        'Uruguay',
+        'Venezuela',
+        'Vietnam',
+        'Zambia',
+        'Zimbabwe'
+      ]
+    > &
+      Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::airport.airport',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::airport.airport',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiCardCard extends Schema.CollectionType {
+  collectionName: 'cards';
+  info: {
+    singularName: 'card';
+    pluralName: 'cards';
+    displayName: 'Card';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    processor: Attribute.Enumeration<['Visa', 'Amex', 'Mastercard']>;
+    bank: Attribute.Enumeration<
+      [
+        'Chase',
+        'Amex',
+        'Barclays',
+        'Citi',
+        'Bank of America',
+        'Capital One',
+        'Wells Fargo'
+      ]
+    >;
+    annualFee: Attribute.Decimal;
+    icon: Attribute.Media<'images'>;
+    lounge: Attribute.Relation<
+      'api::card.card',
+      'manyToOne',
+      'api::lounge.lounge'
+    >;
+    personalOrBiz: Attribute.Enumeration<['Personal', 'Business']>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::card.card', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::card.card', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
+export interface ApiLoungeLounge extends Schema.CollectionType {
+  collectionName: 'lounges';
+  info: {
+    singularName: 'lounge';
+    pluralName: 'lounges';
+    displayName: 'Lounge';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    name: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    airport: Attribute.Relation<
+      'api::lounge.lounge',
+      'manyToOne',
+      'api::airport.airport'
+    >;
+    hours: Attribute.Component<'time.hours'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    cards: Attribute.Relation<
+      'api::lounge.lounge',
+      'oneToMany',
+      'api::card.card'
+    >;
+    amenities: Attribute.JSON &
+      Attribute.CustomField<
+        'plugin::multi-select.multi-select',
+        [
+          'Buffet',
+          'Order from menu',
+          'Shower',
+          'Accessible',
+          'Alcohol',
+          'Beds/Sleeping',
+          '',
+          ''
+        ]
+      > &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    detriments: Attribute.JSON &
+      Attribute.CustomField<
+        'plugin::multi-select.multi-select',
+        [
+          'Overall sucks',
+          'Small/few seats',
+          'Food sucks',
+          'No alcohol',
+          'Dated',
+          ''
+        ]
+      > &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Latitude: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Longitutde: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    slug: Attribute.UID<'api::lounge.lounge', 'name'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    images: Attribute.Media<'images', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::lounge.lounge',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::lounge.lounge',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::lounge.lounge',
+      'oneToMany',
+      'api::lounge.lounge'
+    >;
+    locale: Attribute.String;
+  };
+}
+
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -788,351 +1157,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
-export interface ApiAirportAirport extends Schema.CollectionType {
-  collectionName: 'airports';
-  info: {
-    singularName: 'airport';
-    pluralName: 'airports';
-    displayName: 'Airport';
-    description: '';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    Code: Attribute.String &
-      Attribute.Required &
-      Attribute.Unique &
-      Attribute.SetMinMaxLength<{
-        minLength: 3;
-        maxLength: 3;
-      }>;
-    lounges: Attribute.Relation<
-      'api::airport.airport',
-      'oneToMany',
-      'api::lounge.lounge'
-    >;
-    Name: Attribute.String & Attribute.Required;
-    City: Attribute.String & Attribute.Required;
-    State: Attribute.Enumeration<
-      [
-        'AL',
-        'AK',
-        'AZ',
-        'AR',
-        'CA',
-        'CO',
-        'CT',
-        'DE',
-        'FL',
-        'GA',
-        'HI',
-        'ID',
-        'IL',
-        'IN',
-        'IA',
-        'KS',
-        'KY',
-        'LA',
-        'ME',
-        'MD',
-        'MA',
-        'MI',
-        'MN',
-        'MS',
-        'MO',
-        'MT',
-        'NE',
-        'NV',
-        'NH',
-        'NJ',
-        'NM',
-        'NY',
-        'NC',
-        'ND',
-        'OH',
-        'OK',
-        'OR',
-        'PA',
-        'RI',
-        'SC',
-        'SD',
-        'TN',
-        'TX',
-        'UT',
-        'VT',
-        'VA',
-        'WA',
-        'WV',
-        'WI',
-        'WY'
-      ]
-    >;
-    Country: Attribute.Enumeration<
-      [
-        'Argentina',
-        'Australia',
-        'Austria',
-        'Bahamas',
-        'Bahrain',
-        'Bangladesh',
-        'Belgium',
-        'Belize',
-        'Brazil',
-        'Bulgaria',
-        'Cambodia',
-        'Canada',
-        'Chile',
-        'China',
-        'Colombia',
-        'Costa Rica',
-        'Croatia',
-        'Cuba',
-        'Cyprus',
-        'Czech Republic',
-        'Denmark',
-        'Dominican Republic',
-        'Ecuador',
-        'Egypt',
-        'El Salvador',
-        'Estonia',
-        'Fiji',
-        'Finland',
-        'France',
-        'Germany',
-        'Greece',
-        'Guatemala',
-        'Honduras',
-        'Hungary',
-        'Iceland',
-        'India',
-        'Indonesia',
-        'Ireland',
-        'Israel',
-        'Italy',
-        'Jamaica',
-        'Japan',
-        'Jordan',
-        'Kenya',
-        'Kuwait',
-        'Latvia',
-        'Lebanon',
-        'Lithuania',
-        'Luxembourg',
-        'Malaysia',
-        'Malta',
-        'Mauritius',
-        'Mexico',
-        'Monaco',
-        'Montenegro',
-        'Morocco',
-        'Myanmar',
-        'Nepal',
-        'Netherlands',
-        'New Zealand',
-        'Nicaragua',
-        'Nigeria',
-        'Norway',
-        'Oman',
-        'Pakistan',
-        'Panama',
-        'Paraguay',
-        'Peru',
-        'Philippines',
-        'Poland',
-        'Portugal',
-        'Qatar',
-        'Romania',
-        'Russia',
-        'Saint Kitts and Nevis',
-        'Saint Lucia',
-        'Saudi Arabia',
-        'Serbia',
-        'Singapore',
-        'Slovakia',
-        'Slovenia',
-        'South Africa',
-        'South Korea',
-        'Spain',
-        'Sri Lanka',
-        'Sweden',
-        'Switzerland',
-        'Taiwan',
-        'Tanzania',
-        'Thailand',
-        'Trinidad and Tobago',
-        'Turkey',
-        'Uganda',
-        'Ukraine',
-        'United Arab Emirates',
-        'United Kingdom',
-        'United States',
-        'Uruguay',
-        'Venezuela',
-        'Vietnam',
-        'Zambia',
-        'Zimbabwe'
-      ]
-    > &
-      Attribute.Required;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::airport.airport',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::airport.airport',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiCardCard extends Schema.CollectionType {
-  collectionName: 'cards';
-  info: {
-    singularName: 'card';
-    pluralName: 'cards';
-    displayName: 'Card';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    name: Attribute.String;
-    processor: Attribute.Enumeration<['Visa', 'Amex', 'Mastercard']>;
-    bank: Attribute.Enumeration<
-      [
-        'Chase',
-        'Amex',
-        'Barclays',
-        'Citi',
-        'Bank of America',
-        'Capital One',
-        'Wells Fargo'
-      ]
-    >;
-    annualFee: Attribute.Decimal;
-    icon: Attribute.Media<'images'>;
-    lounge: Attribute.Relation<
-      'api::card.card',
-      'manyToOne',
-      'api::lounge.lounge'
-    >;
-    personalOrBiz: Attribute.Enumeration<['Personal', 'Business']>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::card.card', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<'api::card.card', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-  };
-}
-
-export interface ApiLoungeLounge extends Schema.CollectionType {
-  collectionName: 'lounges';
-  info: {
-    singularName: 'lounge';
-    pluralName: 'lounges';
-    displayName: 'Lounge';
-    description: '';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  pluginOptions: {
-    i18n: {
-      localized: true;
-    };
-  };
-  attributes: {
-    name: Attribute.String &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    airport: Attribute.Relation<
-      'api::lounge.lounge',
-      'manyToOne',
-      'api::airport.airport'
-    >;
-    hours: Attribute.Component<'time.hours'> &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    cards: Attribute.Relation<
-      'api::lounge.lounge',
-      'oneToMany',
-      'api::card.card'
-    >;
-    amenities: Attribute.JSON &
-      Attribute.CustomField<
-        'plugin::multi-select.multi-select',
-        [
-          'Buffet',
-          'Order from menu',
-          'Shower',
-          'Accessible',
-          'Alcohol',
-          'Beds/Sleeping',
-          '',
-          ''
-        ]
-      > &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    detriments: Attribute.JSON &
-      Attribute.CustomField<
-        'plugin::multi-select.multi-select',
-        [
-          'Overall sucks',
-          'Small/few seats',
-          'Food sucks',
-          'No alcohol',
-          'Dated',
-          ''
-        ]
-      > &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::lounge.lounge',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::lounge.lounge',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    localizations: Attribute.Relation<
-      'api::lounge.lounge',
-      'oneToMany',
-      'api::lounge.lounge'
-    >;
-    locale: Attribute.String;
-  };
-}
-
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -1143,6 +1167,9 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
+      'api::airport.airport': ApiAirportAirport;
+      'api::card.card': ApiCardCard;
+      'api::lounge.lounge': ApiLoungeLounge;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
@@ -1151,9 +1178,6 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
-      'api::airport.airport': ApiAirportAirport;
-      'api::card.card': ApiCardCard;
-      'api::lounge.lounge': ApiLoungeLounge;
     }
   }
 }

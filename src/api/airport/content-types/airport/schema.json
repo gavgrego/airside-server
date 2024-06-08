@@ -12,7 +12,7 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Code": {
+    "code": {
       "type": "string",
       "maxLength": 3,
       "minLength": 3,
@@ -25,15 +25,15 @@
       "target": "api::lounge.lounge",
       "mappedBy": "airport"
     },
-    "Name": {
+    "name": {
       "type": "string",
       "required": true
     },
-    "City": {
+    "city": {
       "type": "string",
       "required": true
     },
-    "State": {
+    "state": {
       "type": "enumeration",
       "enum": [
         "AL",
@@ -89,7 +89,7 @@
       ],
       "required": false
     },
-    "Country": {
+    "country": {
       "type": "enumeration",
       "enum": [
         "Argentina",
