@@ -5,14 +5,12 @@ const index = getAlgoliaIndex("lounge");
 module.exports = {
   async afterCreate(data) {
     const { id } = data.result;
-    // Query lounge added to database
-    console.log("created");
 
     const lounge = await strapi.entityService.findOne(
       "api::lounge.lounge",
       id,
       {
-        populate: { airport: true },
+        populate: { airport: true, card: true },
       }
     );
 
@@ -31,7 +29,7 @@ module.exports = {
       "api::lounge.lounge",
       id,
       {
-        populate: { airport: true },
+        populate: { airport: true, card: true },
       }
     );
 

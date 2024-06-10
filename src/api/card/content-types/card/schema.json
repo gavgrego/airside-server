@@ -8,7 +8,7 @@
     "description": ""
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
@@ -46,18 +46,18 @@
         "images"
       ]
     },
-    "lounge": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::lounge.lounge",
-      "inversedBy": "cards"
-    },
     "personalOrBiz": {
       "type": "enumeration",
       "enum": [
         "Personal",
         "Business"
       ]
+    },
+    "lounges": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::lounge.lounge",
+      "mappedBy": "card"
     }
   }
 }
