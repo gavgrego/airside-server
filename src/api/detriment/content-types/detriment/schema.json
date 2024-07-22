@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "detriments",
+  "info": {
+    "singularName": "detriment",
+    "pluralName": "detriments",
+    "displayName": "Detriment",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "icon": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

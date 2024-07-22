@@ -4,10 +4,11 @@
   "info": {
     "singularName": "amenity",
     "pluralName": "amenities",
-    "displayName": "amenity"
+    "displayName": "amenity",
+    "description": ""
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
@@ -15,6 +16,14 @@
       "type": "string",
       "unique": true,
       "required": true
+    },
+    "icon": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
     }
   }
 }

@@ -1,0 +1,19 @@
+{
+  "kind": "collectionType",
+  "collectionName": "terminals",
+  "info": {
+    "singularName": "terminal",
+    "pluralName": "terminals",
+    "displayName": "Terminal"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

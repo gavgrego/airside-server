@@ -975,6 +975,8 @@ export interface ApiAirportAirport extends Schema.CollectionType {
       ]
     > &
       Attribute.Required;
+    accessDetails: Attribute.Text;
+    dayPass: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -998,15 +1000,16 @@ export interface ApiAmenityAmenity extends Schema.CollectionType {
     singularName: 'amenity';
     pluralName: 'amenities';
     displayName: 'amenity';
+    description: '';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     name: Attribute.String & Attribute.Required & Attribute.Unique;
+    icon: Attribute.Media<'images'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
       'api::amenity.amenity',
       'oneToOne',
@@ -1050,16 +1053,42 @@ export interface ApiCardCard extends Schema.CollectionType {
     annualFee: Attribute.Decimal;
     icon: Attribute.Media<'images'>;
     personalOrBiz: Attribute.Enumeration<['Personal', 'Business']>;
-    lounges: Attribute.Relation<
-      'api::card.card',
-      'oneToMany',
-      'api::lounge.lounge'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<'api::card.card', 'oneToOne', 'admin::user'> &
       Attribute.Private;
     updatedBy: Attribute.Relation<'api::card.card', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
+export interface ApiDetrimentDetriment extends Schema.CollectionType {
+  collectionName: 'detriments';
+  info: {
+    singularName: 'detriment';
+    pluralName: 'detriments';
+    displayName: 'Detriment';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    name: Attribute.String;
+    icon: Attribute.Media<'images'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::detriment.detriment',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::detriment.detriment',
+      'oneToOne',
+      'admin::user'
+    > &
       Attribute.Private;
   };
 }
@@ -1097,23 +1126,6 @@ export interface ApiLoungeLounge extends Schema.CollectionType {
       'oneToMany',
       'api::amenity.amenity'
     >;
-    detriments: Attribute.JSON &
-      Attribute.CustomField<
-        'plugin::multi-select.multi-select',
-        [
-          'Overall sucks',
-          'Small/few seats',
-          'Food sucks',
-          'No alcohol',
-          'Dated',
-          ''
-        ]
-      > &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     slug: Attribute.UID<'api::lounge.lounge', 'name'> &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -1159,11 +1171,41 @@ export interface ApiLoungeLounge extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    card: Attribute.Relation<
+    cards: Attribute.Relation<
       'api::lounge.lounge',
-      'manyToOne',
+      'oneToMany',
       'api::card.card'
     >;
+    featured: Attribute.Boolean &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<false>;
+    guest: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    moreInfo: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    detriments: Attribute.Relation<
+      'api::lounge.lounge',
+      'oneToMany',
+      'api::detriment.detriment'
+    >;
+    daypass: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1184,6 +1226,35 @@ export interface ApiLoungeLounge extends Schema.CollectionType {
       'api::lounge.lounge'
     >;
     locale: Attribute.String;
+  };
+}
+
+export interface ApiTerminalTerminal extends Schema.CollectionType {
+  collectionName: 'terminals';
+  info: {
+    singularName: 'terminal';
+    pluralName: 'terminals';
+    displayName: 'Terminal';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::terminal.terminal',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::terminal.terminal',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
   };
 }
 
@@ -1208,7 +1279,9 @@ declare module '@strapi/types' {
       'api::airport.airport': ApiAirportAirport;
       'api::amenity.amenity': ApiAmenityAmenity;
       'api::card.card': ApiCardCard;
+      'api::detriment.detriment': ApiDetrimentDetriment;
       'api::lounge.lounge': ApiLoungeLounge;
+      'api::terminal.terminal': ApiTerminalTerminal;
     }
   }
 }

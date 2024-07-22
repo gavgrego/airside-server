@@ -52,12 +52,6 @@
         "Personal",
         "Business"
       ]
-    },
-    "lounges": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::lounge.lounge",
-      "mappedBy": "card"
     }
   }
 }
