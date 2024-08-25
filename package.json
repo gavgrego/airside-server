@@ -20,7 +20,6 @@
     "@strapi/plugin-users-permissions": "4.24.4",
     "@strapi/provider-upload-aws-s3": "^4.24.5",
     "@strapi/strapi": "4.24.4",
-    "algoliasearch": "^4.23.3",
     "better-sqlite3": "8.6.0",
     "pg": "^8.11.5",
     "react": "^18.0.0",
