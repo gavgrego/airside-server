@@ -4,7 +4,8 @@
   "info": {
     "singularName": "alliance-tier",
     "pluralName": "alliance-tiers",
-    "displayName": "Alliance Tier"
+    "displayName": "Alliance Tier",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -15,7 +16,7 @@
       "type": "string",
       "required": true
     },
-    "Value": {
+    "value": {
       "type": "string",
       "regex": "^[a-z]+(-[a-z]+)*$",
       "required": true

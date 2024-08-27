@@ -1000,13 +1000,14 @@ export interface ApiAllianceTierAllianceTier extends Schema.CollectionType {
     singularName: 'alliance-tier';
     pluralName: 'alliance-tiers';
     displayName: 'Alliance Tier';
+    description: '';
   };
   options: {
     draftAndPublish: false;
   };
   attributes: {
     name: Attribute.String & Attribute.Required;
-    Value: Attribute.String & Attribute.Required;
+    value: Attribute.String & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
