@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "alliance_tiers",
+  "info": {
+    "singularName": "alliance-tier",
+    "pluralName": "alliance-tiers",
+    "displayName": "Alliance Tier"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "Value": {
+      "type": "string",
+      "regex": "^[a-z]+(-[a-z]+)*$",
+      "required": true
+    }
+  }
+}

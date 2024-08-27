@@ -137,6 +137,11 @@
         }
       },
       "type": "string"
+    },
+    "alliance_access": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::alliance-tier.alliance-tier"
     }
   }
 }

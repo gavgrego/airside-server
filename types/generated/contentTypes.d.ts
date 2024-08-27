@@ -994,6 +994,36 @@ export interface ApiAirportAirport extends Schema.CollectionType {
   };
 }
 
+export interface ApiAllianceTierAllianceTier extends Schema.CollectionType {
+  collectionName: 'alliance_tiers';
+  info: {
+    singularName: 'alliance-tier';
+    pluralName: 'alliance-tiers';
+    displayName: 'Alliance Tier';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required;
+    Value: Attribute.String & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::alliance-tier.alliance-tier',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::alliance-tier.alliance-tier',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiAmenityAmenity extends Schema.CollectionType {
   collectionName: 'amenities';
   info: {
@@ -1206,6 +1236,11 @@ export interface ApiLoungeLounge extends Schema.CollectionType {
           localized: false;
         };
       }>;
+    alliance_access: Attribute.Relation<
+      'api::lounge.lounge',
+      'oneToMany',
+      'api::alliance-tier.alliance-tier'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1277,6 +1312,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::airport.airport': ApiAirportAirport;
+      'api::alliance-tier.alliance-tier': ApiAllianceTierAllianceTier;
       'api::amenity.amenity': ApiAmenityAmenity;
       'api::card.card': ApiCardCard;
       'api::detriment.detriment': ApiDetrimentDetriment;
