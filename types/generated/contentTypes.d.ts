@@ -1178,10 +1178,11 @@ export interface ApiLoungeLounge extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    location: Attribute.String &
+    terminal: Attribute.String &
+      Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
-          localized: true;
+          localized: false;
         };
       }>;
     notes: Attribute.RichText &
@@ -1242,6 +1243,14 @@ export interface ApiLoungeLounge extends Schema.CollectionType {
       'oneToMany',
       'api::alliance-tier.alliance-tier'
     >;
+    ambiguous_access: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
+      Attribute.DefaultTo<false>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<

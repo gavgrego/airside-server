@@ -63,13 +63,14 @@
       "type": "text",
       "required": true
     },
-    "location": {
+    "terminal": {
       "pluginOptions": {
         "i18n": {
-          "localized": true
+          "localized": false
         }
       },
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "notes": {
       "pluginOptions": {
@@ -142,6 +143,16 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::alliance-tier.alliance-tier"
+    },
+    "ambiguous_access": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "boolean",
+      "default": false,
+      "required": true
     }
   }
 }

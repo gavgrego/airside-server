@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2024-08-27T21:41:06.534Z"
+    "x-generation-date": "2024-08-30T18:15:05.473Z"
   },
   "x-strapi-config": {
     "plugins": [],
@@ -1322,7 +1322,7 @@
                         "description": {
                           "type": "string"
                         },
-                        "location": {
+                        "terminal": {
                           "type": "string"
                         },
                         "notes": {
@@ -1855,6 +1855,9 @@
                               }
                             }
                           }
+                        },
+                        "ambiguous_access": {
+                          "type": "boolean"
                         },
                         "createdAt": {
                           "type": "string",
@@ -4930,6 +4933,8 @@
         "required": [
           "googlePlaceId",
           "description",
+          "terminal",
+          "ambiguous_access",
           "locale"
         ],
         "type": "object",
@@ -4971,7 +4976,7 @@
           "description": {
             "type": "string"
           },
-          "location": {
+          "terminal": {
             "type": "string"
           },
           "notes": {
@@ -5037,6 +5042,9 @@
               "example": "string or id"
             }
           },
+          "ambiguous_access": {
+            "type": "boolean"
+          },
           "locale": {
             "type": "string"
           }
@@ -5051,7 +5059,9 @@
           "data": {
             "required": [
               "googlePlaceId",
-              "description"
+              "description",
+              "terminal",
+              "ambiguous_access"
             ],
             "type": "object",
             "properties": {
@@ -5092,7 +5102,7 @@
               "description": {
                 "type": "string"
               },
-              "location": {
+              "terminal": {
                 "type": "string"
               },
               "notes": {
@@ -5157,6 +5167,9 @@
                   ],
                   "example": "string or id"
                 }
+              },
+              "ambiguous_access": {
+                "type": "boolean"
               },
               "locale": {
                 "type": "string"
@@ -5283,7 +5296,9 @@
         "type": "object",
         "required": [
           "googlePlaceId",
-          "description"
+          "description",
+          "terminal",
+          "ambiguous_access"
         ],
         "properties": {
           "name": {
@@ -6035,7 +6050,7 @@
                                     "description": {
                                       "type": "string"
                                     },
-                                    "location": {
+                                    "terminal": {
                                       "type": "string"
                                     },
                                     "notes": {
@@ -6569,6 +6584,9 @@
                                         }
                                       }
                                     },
+                                    "ambiguous_access": {
+                                      "type": "boolean"
+                                    },
                                     "createdAt": {
                                       "type": "string",
                                       "format": "date-time"
@@ -6881,7 +6899,7 @@
           "description": {
             "type": "string"
           },
-          "location": {
+          "terminal": {
             "type": "string"
           },
           "notes": {
@@ -6964,6 +6982,9 @@
                 }
               }
             }
+          },
+          "ambiguous_access": {
+            "type": "boolean"
           },
           "createdAt": {
             "type": "string",
