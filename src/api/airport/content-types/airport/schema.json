@@ -196,12 +196,6 @@
         "Zimbabwe"
       ],
       "required": true
-    },
-    "accessDetails": {
-      "type": "text"
-    },
-    "dayPass": {
-      "type": "string"
     }
   }
 }

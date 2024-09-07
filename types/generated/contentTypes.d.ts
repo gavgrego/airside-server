@@ -975,8 +975,6 @@ export interface ApiAirportAirport extends Schema.CollectionType {
       ]
     > &
       Attribute.Required;
-    accessDetails: Attribute.Text;
-    dayPass: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<

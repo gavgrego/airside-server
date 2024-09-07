@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2024-08-30T18:15:05.473Z"
+    "x-generation-date": "2024-09-07T18:00:21.945Z"
   },
   "x-strapi-config": {
     "plugins": [],
@@ -282,12 +282,6 @@
                   "Zambia",
                   "Zimbabwe"
                 ]
-              },
-              "accessDetails": {
-                "type": "string"
-              },
-              "dayPass": {
-                "type": "string"
               }
             }
           }
@@ -570,12 +564,6 @@
                                         "Zambia",
                                         "Zimbabwe"
                                       ]
-                                    },
-                                    "accessDetails": {
-                                      "type": "string"
-                                    },
-                                    "dayPass": {
-                                      "type": "string"
                                     },
                                     "createdAt": {
                                       "type": "string",
@@ -2087,12 +2075,6 @@
               "Zambia",
               "Zimbabwe"
             ]
-          },
-          "accessDetails": {
-            "type": "string"
-          },
-          "dayPass": {
-            "type": "string"
           },
           "createdAt": {
             "type": "string",
@@ -6815,12 +6797,6 @@
                           "Zambia",
                           "Zimbabwe"
                         ]
-                      },
-                      "accessDetails": {
-                        "type": "string"
-                      },
-                      "dayPass": {
-                        "type": "string"
                       },
                       "createdAt": {
                         "type": "string",
