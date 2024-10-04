@@ -1,6 +1,6 @@
 module.exports = ({ env }) => ({
   documentation: {
-    enabled: true,
+    enabled: false,
     config: {
       openapi: "3.0.0",
       info: {

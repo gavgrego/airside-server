@@ -1,32 +1,32 @@
-import type { Schema, Attribute } from '@strapi/strapi';
+import type { Struct, Schema } from '@strapi/strapi';
 
-export interface TimeHours extends Schema.Component {
+export interface TimeHours extends Struct.ComponentSchema {
   collectionName: 'components_time_hours';
   info: {
     displayName: 'Hours';
     icon: 'clock';
   };
   attributes: {
-    mondayOpen: Attribute.Time;
-    mondayClose: Attribute.Time;
-    tuesdayOpen: Attribute.Time;
-    tuesdayClose: Attribute.Time;
-    wednesdayOpen: Attribute.Time;
-    wednesdayClose: Attribute.Time;
-    thursdayOpen: Attribute.Time;
-    thursdayClose: Attribute.Time;
-    fridayOpen: Attribute.Time;
-    fridayClose: Attribute.Time;
-    saturdayOpen: Attribute.Time;
-    saturdayClose: Attribute.Time;
-    sundayOpen: Attribute.Time;
-    sundayClose: Attribute.Time;
+    mondayOpen: Schema.Attribute.Time;
+    mondayClose: Schema.Attribute.Time;
+    tuesdayOpen: Schema.Attribute.Time;
+    tuesdayClose: Schema.Attribute.Time;
+    wednesdayOpen: Schema.Attribute.Time;
+    wednesdayClose: Schema.Attribute.Time;
+    thursdayOpen: Schema.Attribute.Time;
+    thursdayClose: Schema.Attribute.Time;
+    fridayOpen: Schema.Attribute.Time;
+    fridayClose: Schema.Attribute.Time;
+    saturdayOpen: Schema.Attribute.Time;
+    saturdayClose: Schema.Attribute.Time;
+    sundayOpen: Schema.Attribute.Time;
+    sundayClose: Schema.Attribute.Time;
   };
 }
 
-declare module '@strapi/types' {
-  export module Shared {
-    export interface Components {
+declare module '@strapi/strapi' {
+  export module Public {
+    export interface ComponentSchemas {
       'time.hours': TimeHours;
     }
   }

@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@strapi/plugin-cloud": "5.0.0",
-    "@strapi/plugin-documentation": "^4.24.4",
+    "@strapi/plugin-documentation": "^5.0.2",
     "@strapi/plugin-users-permissions": "5.0.0",
     "@strapi/provider-upload-aws-s3": "^4.24.5",
     "@strapi/strapi": "5.0.0",
@@ -23,8 +23,8 @@
     "pg": "^8.11.5",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
-    "react-router-dom": "^6.0.0",
-    "strapi-plugin-multi-select": "^1.2.3",
+    "react-router-dom": "^6.26.2",
+    "strapi-plugin-multi-select": "matthewdickinson/strapi-plugin-multi-select#strapi_5",
     "styled-components": "^6.0.0"
   },
   "devDependencies": {},
