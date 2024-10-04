@@ -196,6 +196,11 @@
         "Zimbabwe"
       ],
       "required": true
+    },
+    "featured": {
+      "type": "boolean",
+      "default": false,
+      "required": true
     }
   }
 }

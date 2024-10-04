@@ -975,6 +975,9 @@ export interface ApiAirportAirport extends Schema.CollectionType {
       ]
     > &
       Attribute.Required;
+    featured: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<false>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1087,6 +1090,36 @@ export interface ApiCardCard extends Schema.CollectionType {
     createdBy: Attribute.Relation<'api::card.card', 'oneToOne', 'admin::user'> &
       Attribute.Private;
     updatedBy: Attribute.Relation<'api::card.card', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
+export interface ApiContactContact extends Schema.CollectionType {
+  collectionName: 'contacts';
+  info: {
+    singularName: 'contact';
+    pluralName: 'contacts';
+    displayName: 'Contact';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    email: Attribute.String;
+    comments: Attribute.Text;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::contact.contact',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::contact.contact',
+      'oneToOne',
+      'admin::user'
+    > &
       Attribute.Private;
   };
 }
@@ -1323,6 +1356,7 @@ declare module '@strapi/types' {
       'api::alliance-tier.alliance-tier': ApiAllianceTierAllianceTier;
       'api::amenity.amenity': ApiAmenityAmenity;
       'api::card.card': ApiCardCard;
+      'api::contact.contact': ApiContactContact;
       'api::detriment.detriment': ApiDetrimentDetriment;
       'api::lounge.lounge': ApiLoungeLounge;
       'api::terminal.terminal': ApiTerminalTerminal;
