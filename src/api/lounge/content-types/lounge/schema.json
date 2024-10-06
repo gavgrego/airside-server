@@ -110,14 +110,6 @@
       "type": "boolean",
       "default": false
     },
-    "guest": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "text"
-    },
     "moreInfo": {
       "pluginOptions": {
         "i18n": {
@@ -153,6 +145,14 @@
       "type": "boolean",
       "default": false,
       "required": true
+    },
+    "guest": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "richtext"
     }
   }
 }
